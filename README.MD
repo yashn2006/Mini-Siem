@@ -8,7 +8,12 @@ This project parses security logs, detects suspicious activity, stores incidents
 
 ## Dashboard Preview
 
-![Mini SIEM Dashboard](screenshots/dashboard.png)
+
+### Logs View
+[Logs Dashboard](Screenshots/Dashboard1.png)
+
+### Alerts View
+[Alerts Dashboard](Screenshots/Dashboard2.png)
 
 ---
 
