@@ -2,12 +2,20 @@
 
 A beginner-friendly Security Information and Event Management (SIEM) project built using Python, Flask, and SQLite.
 
-This project monitors system logs, detects suspicious behavior, and displays alerts in a web dashboard.
+This project parses security logs, detects suspicious activity, stores incidents in a database, and displays alerts in a dashboard.
+
+---
+
+## Dashboard Preview
+
+![Mini SIEM Dashboard](screenshots/dashboard.png)
+
+---
 
 ## Features
 
-### 1. Brute Force Detection
-Detects repeated failed login attempts from the same IP address.
+### Brute Force Detection
+Detects repeated failed login attempts from the same IP.
 
 Rule:
 - More than 3 failed login attempts from the same IP
@@ -17,11 +25,11 @@ FAILED_LOGIN admin 192.168.1.20
 
 ---
 
-### 2. Port Scan Detection
-Detects when a single IP accesses multiple different ports.
+### Port Scan Detection
+Detects when one IP accesses multiple unique ports.
 
 Rule:
-- 4 or more unique ports accessed by same IP
+- 4 or more unique ports accessed by the same IP
 
 Example:
 PORT_ACCESS 192.168.1.50 22
@@ -31,11 +39,11 @@ PORT_ACCESS 192.168.1.50 3306
 
 ---
 
-### 3. Password Spraying Detection
-Detects one IP attempting to log into multiple accounts.
+### Password Spraying Detection
+Detects one IP attempting multiple usernames.
 
 Rule:
-- 4 or more different usernames targeted by same IP
+- 4 or more different usernames targeted from one IP
 
 Example:
 FAILED_LOGIN admin 192.168.1.80
@@ -45,7 +53,7 @@ FAILED_LOGIN user3 192.168.1.80
 
 ---
 
-## Technologies Used
+## Tech Stack
 
 - Python 3
 - Flask
@@ -56,27 +64,29 @@ FAILED_LOGIN user3 192.168.1.80
 ## Project Structure
 
 mini-siem/
-│── app.py
-│── log_parser.py
-│── detector.py
-│── database.py
-│── requirements.txt
-│── README.md
-│── siem.db
-│── logs/
-│   └── sample.log
-│── templates/
-│   └── dashboard.html
+│── app.py  
+│── log_parser.py  
+│── detector.py  
+│── database.py  
+│── requirements.txt  
+│── README.md  
+│── .gitignore  
+│── logs/  
+│   └── sample.log  
+│── templates/  
+│   └── dashboard.html  
+│── screenshots/  
+│   └── dashboard.png  
 
 ---
 
 ## Installation
 
-Clone repository:
+Clone the repository:
 
 git clone <your-repository-url>
 
-Go to project folder:
+Move into project folder:
 
 cd mini-siem
 
@@ -92,7 +102,7 @@ Start Flask server:
 
 python app.py
 
-Open browser:
+Open in browser:
 
 http://127.0.0.1:5000
 
@@ -100,7 +110,7 @@ http://127.0.0.1:5000
 
 ## Supported Log Formats
 
-Login logs:
+Login events:
 
 YYYY-MM-DD HH:MM:SS FAILED_LOGIN username ip
 
@@ -108,7 +118,7 @@ Example:
 
 2026-05-03 09:01:15 FAILED_LOGIN admin 192.168.1.20
 
-Port scan logs:
+Port access events:
 
 YYYY-MM-DD HH:MM:SS PORT_ACCESS ip port
 
@@ -120,27 +130,41 @@ Example:
 
 ## Detection Logic
 
-Brute Force:
+Brute Force Detection:
 - Count failed login attempts per IP
-- Alert if count > 3
+- Alert when count > 3
 
-Port Scan:
-- Count unique ports accessed by IP
-- Alert if ports >= 4
+Port Scan Detection:
+- Count unique ports accessed per IP
+- Alert when count >= 4
 
-Password Spraying:
-- Count unique usernames attacked by IP
-- Alert if usernames >= 4
+Password Spraying Detection:
+- Count unique usernames targeted by same IP
+- Alert when count >= 4
 
 ---
 
 ## Dashboard Features
 
 Displays:
-- Parsed logs
+- Security logs
 - Alert type
-- IP address
-- Number of suspicious events
+- Source IP
+- Attack count
+- Port information
+- Username information
+
+---
+
+## Skills Demonstrated
+
+- SIEM fundamentals
+- Log analysis
+- Threat detection
+- Python scripting
+- Flask web development
+- Database management
+- Security monitoring
 
 ---
 
@@ -148,23 +172,10 @@ Displays:
 
 - Real-time log monitoring
 - Email alerts
-- GeoIP lookup
+- GeoIP tracking
 - Threat intelligence integration
-- Login authentication
 - Charts and analytics
 - Export reports
-
----
-
-## Skills Demonstrated
-
-- Log analysis
-- Threat detection
-- SIEM fundamentals
-- Python scripting
-- Database handling
-- Web development
-- Security monitoring
 
 ---
 
