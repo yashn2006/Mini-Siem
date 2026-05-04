@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mini SIEM Dashboard</title>
+</head>
+<body>
+    <h1>Mini SIEM Dashboard</h1>
+
+    <h2>Logs</h2>
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Timestamp</th>
+            <th>Event Type</th>
+            <th>Username</th>
+            <th>IP Address</th>
+            <th>Port</th>
+        </tr>
+
+        {% for log in logs %}
+        <tr>
+            <td>{{ log[0] }}</td>
+            <td>{{ log[1] }}</td>
+            <td>{{ log[2] }}</td>
+            <td>{{ log[3] }}</td>
+            <td>{{ log[4] }}</td>
+            <td>{{ log[5] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <h2>Alerts</h2>
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Alert Type</th>
+            <th>IP Address</th>
+            <th>Count</th>
+        </tr>
+
+        {% for alert in alerts %}
+        <tr>
+            <td>{{ alert[0] }}</td>
+            <td>{{ alert[1] }}</td>
+            <td>{{ alert[2] }}</td>
+            <td>{{ alert[3] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
